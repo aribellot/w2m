@@ -1,10 +1,14 @@
 <ion-content>
-  <ion-row>
-    error 404, la pagina no se ha encontrado
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="4">
+      <ion-img src="assets/err404.jpg" />
+    </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-button (click)="navigateToList()">
-      Ver listado
-    </ion-button>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="4">
+      <ion-button expand="block" (click)="navigateToList()">
+        Show list again
+      </ion-button>
+    </ion-col>
   </ion-row>
 </ion-content>

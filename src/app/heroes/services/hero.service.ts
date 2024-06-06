@@ -4,12 +4,14 @@ import { Observable, of } from 'rxjs';
 import { catchError, delay, finalize, map, tap } from 'rxjs/operators';
 import { Hero } from '../models/hero';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
   private http = inject(HttpClient);
+  private router = inject(Router);
 
   private heroesUrl = `${environment.apiBaseUrl}/heroes`; // URL to web api
   private httpOptions = {
@@ -73,6 +75,7 @@ export class HeroService {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
       console.log(`${operation} failed: ${error.message}`);
+      this.router.navigate(['error']);
       return of(result as T);
     };
   }

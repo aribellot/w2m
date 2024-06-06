@@ -1,6 +1,6 @@
 import { Component, EnvironmentInjector, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonContent, IonRow, IonButton } from '@ionic/angular/standalone';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonContent, IonRow, IonButton, IonCol, IonImg } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { listOutline, createOutline } from 'ionicons/icons';
 
@@ -9,7 +9,7 @@ import { listOutline, createOutline } from 'ionicons/icons';
   templateUrl: 'error.page.html',
   styleUrls: ['error.page.scss'],
   standalone: true,
-  imports: [IonButton, IonRow, IonContent, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
+  imports: [IonImg, IonCol, IonButton, IonRow, IonContent, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
 })
 export class ErrorPage {
   public environmentInjector = inject(EnvironmentInjector);

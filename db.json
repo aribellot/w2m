@@ -16,9 +16,9 @@
     },
     {
       "id": "5497743",
-      "name": "asdf",
-      "realName": "asdfas",
-      "city": "asdfasdf",
+      "name": "Wonder woman",
+      "realName": "not know",
+      "city": "USA",
       "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/145.jpg"
     },
     {
@@ -34,6 +34,20 @@
       "realName": "Clark kent",
       "city": "Smallville",
       "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/480.jpg"
+    },
+    {
+      "id": "9049334",
+      "name": "asdfasdfasdf",
+      "realName": "asdfasfdas",
+      "city": "asdfasfd",
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/96.jpg"
+    },
+    {
+      "id": "752463",
+      "name": "asdfasdf",
+      "realName": "asdfasdf",
+      "city": "asfasdfasd",
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/93.jpg"
     }
   ]
 }

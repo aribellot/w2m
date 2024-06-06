@@ -12,7 +12,11 @@
   </ion-header>
   <ion-row>
     <ion-col>
-      <ion-searchbar [debounce]="1000" (ionInput)="doSearch($event)" color="light"></ion-searchbar>
+      <ion-searchbar
+        [debounce]="1000"
+        (ionInput)="doSearch($event)"
+        color="light"
+      ></ion-searchbar>
     </ion-col>
   </ion-row>
   @if (filteredHeroes$ | async; as filteredHeroes) {
@@ -52,12 +56,14 @@
       </ion-card>
     </ion-col>
     } @empty {
-    <p>No heroes found</p>
+    <ion-col size="12" class="ion-padding ion-text-center">
+      0 Heroes found
+    </ion-col>
     }
   </ion-row>
   } @else {
-  <ion-row>
-    <ion-col>Loading ...</ion-col>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="6" class="ion-text-center ion-padding">Loading heroes ...</ion-col>
   </ion-row>
   }
 </ion-content>

@@ -14,8 +14,8 @@
       <ion-col size="6">
         <ion-list>
           <ion-item>
-            <ion-input labelPlacement="floating" formControlName="name">
-              <div slot="label">Name <ion-text color="danger">*</ion-text></div>
+            <ion-input class="uppercase" labelPlacement="floating" formControlName="name">
+              <div slot="label" class="capitalize">Name <ion-text color="danger">*</ion-text></div>
             </ion-input>
           </ion-item>
           <ion-item>
@@ -41,10 +41,8 @@
               </div>
             </ion-input>
           </ion-item>
-          <ion-item>
-            <ion-button type="submit" [disabled]="heroForm.invalid">
-              Add new hero
-            </ion-button>
+          <ion-item button [disabled]="heroForm.invalid" color="success" (click)="onSubmit()">
+            Update hero
           </ion-item>
         </ion-list>
       </ion-col>

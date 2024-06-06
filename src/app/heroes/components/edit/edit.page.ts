@@ -86,7 +86,7 @@ export class EditPage implements OnInit {
         this.imagePreview = data.imgUrl ? data.imgUrl : this.imagePreview;
       },
       error: (err) => {
-        console.error(err);
+        this.router.navigate(['error']);
       },
       complete: () => {
         console.log('complete');
