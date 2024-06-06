@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      List
-    </ion-title>
+    <ion-title> List </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,4 +10,22 @@
       <ion-title size="large">List</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col> Id </ion-col>
+      <ion-col> Name </ion-col>
+      <ion-col> Identity </ion-col>
+      <ion-col> City </ion-col>
+      <ion-col> Actions </ion-col>
+    </ion-row>
+    @for (hero of (filteredHeroes$ | async); track $index) {
+    <ion-row>
+      <ion-col> {{ hero.id }} </ion-col>
+      <ion-col> {{ hero.name }} </ion-col>
+      <ion-col> {{ hero.realName }} </ion-col>
+      <ion-col> {{ hero.city }} </ion-col>
+      <ion-col> edit </ion-col>
+    </ion-row>
+    }
+  </ion-grid>
 </ion-content>
