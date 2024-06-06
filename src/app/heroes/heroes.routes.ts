@@ -9,16 +9,26 @@ export const routes: Routes = [
       {
         path: 'list',
         loadComponent: () =>
-          import('../tab1/tab1.page').then((m) => m.Tab1Page),
+          import('./components/list/list.page').then((m) => m.ListPage),
       },
       {
         path: 'create',
         loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
+          import('./components/create/create.page').then((m) => m.CreatePage),
+      },
+      {
+        path: 'edit/:id',
+        loadComponent: () =>
+          import('./components/edit/edit.page').then((m) => m.EditPage),
       },
       {
         path: '',
         redirectTo: '/heroes/list',
+        pathMatch: 'full',
+      },
+      {
+        path: '**',
+        redirectTo: '/error',
         pathMatch: 'full',
       },
     ],

@@ -4,13 +4,15 @@
       "id": 1,
       "name": "Batman",
       "realName": "Bruce wayne",
-      "city": "Gotham city"
+      "city": "Gotham city",
+      "imgUrl": ""
     },
     {
       "id": 2,
       "name": "Superman",
       "realName": "Clarc kent",
-      "city": "Smallville"
+      "city": "Smallville",
+      "imgUrl": ""
     }
   ]
 }
