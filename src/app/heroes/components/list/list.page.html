@@ -10,6 +10,7 @@
       <ion-title size="large">List</ion-title>
     </ion-toolbar>
   </ion-header>
+  @if (filteredHeroes$ | async; as filteredHeroes) {
   <ion-grid>
     <ion-row>
       <ion-col> Id </ion-col>
@@ -18,7 +19,7 @@
       <ion-col> City </ion-col>
       <ion-col> Actions </ion-col>
     </ion-row>
-    @for (hero of (filteredHeroes$ | async); track $index) {
+    @for (hero of filteredHeroes; track hero.id) {
     <ion-row>
       <ion-col> {{ hero.id }} </ion-col>
       <ion-col> {{ hero.name }} </ion-col>
@@ -26,6 +27,13 @@
       <ion-col> {{ hero.city }} </ion-col>
       <ion-col> edit </ion-col>
     </ion-row>
+    } @empty {
+    <p>No heroes found</p>
     }
   </ion-grid>
+  } @else {
+  <ion-row>
+    <ion-col>Loading ...</ion-col>
+  </ion-row>
+  }
 </ion-content>
