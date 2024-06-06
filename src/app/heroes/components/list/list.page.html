@@ -11,12 +11,26 @@
     </ion-toolbar>
   </ion-header>
   <ion-row>
-    <ion-col>
+    <ion-col size="8">
       <ion-searchbar
         [debounce]="1000"
         (ionInput)="doSearch($event)"
         color="light"
       ></ion-searchbar>
+    </ion-col>
+    <ion-col>
+      <ion-select
+        interface="popover"
+        aria-label="SortType"
+        placeholder="Sort by"
+        (ionChange)="doSort($event)"
+        color="light"
+      >
+        <ion-select-option value="newest">Newest</ion-select-option>
+        <ion-select-option value="older">Older</ion-select-option>
+        <ion-select-option value="nameAsc">Name Asc</ion-select-option>
+        <ion-select-option value="nameDesc">Name Desc</ion-select-option>
+      </ion-select>
     </ion-col>
   </ion-row>
   @if (filteredHeroes$ | async; as filteredHeroes) {
@@ -63,7 +77,9 @@
   </ion-row>
   } @else {
   <ion-row class="ion-justify-content-center">
-    <ion-col size="6" class="ion-text-center ion-padding">Loading heroes ...</ion-col>
+    <ion-col size="6" class="ion-text-center ion-padding"
+      >Loading heroes ...</ion-col
+    >
   </ion-row>
   }
 </ion-content>

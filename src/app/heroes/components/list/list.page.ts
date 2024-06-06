@@ -13,7 +13,11 @@ import {
   IonCardTitle,
   IonCardContent,
   IonButton,
-  IonIcon, IonSearchbar } from '@ionic/angular/standalone';
+  IonIcon,
+  IonSearchbar,
+  IonSelect,
+  IonSelectOption,
+} from '@ionic/angular/standalone';
 import { HeroService } from '../../services/hero.service';
 import { Observable, map, of } from 'rxjs';
 import { Hero } from '../../models/hero';
@@ -30,7 +34,8 @@ import { SpinnerService } from 'src/app/core/spinner/spinner.service';
   templateUrl: 'list.page.html',
   styleUrls: ['list.page.scss'],
   standalone: true,
-  imports: [IonSearchbar, 
+  imports: [
+    IonSearchbar,
     IonIcon,
     IonButton,
     IonCardContent,
@@ -47,6 +52,8 @@ import { SpinnerService } from 'src/app/core/spinner/spinner.service';
     IonContent,
     AsyncPipe,
     TitleCasePipe,
+    IonSelect,
+    IonSelectOption,
   ],
 })
 export class ListPage {
@@ -57,6 +64,8 @@ export class ListPage {
   router = inject(Router);
   heroes$: Observable<Hero[]> = of([]);
   filteredHeroes$: Observable<Hero[]> | undefined;
+  searhName: string = '';
+  sortType: string = '';
 
   constructor() {
     addIcons({ trashOutline, createOutline });
@@ -73,8 +82,14 @@ export class ListPage {
 
   doSearch(event: any) {
     this.spinnerService.showLoader();
-    const name = event.target.value.toLowerCase();
-    this.filterHeroes(name);
+    this.searhName = event.target.value.toLowerCase();
+    this.filterAndSortHeroes(this.searhName, this.sortType);
+  }
+
+  doSort(event: any) {
+    this.spinnerService.showLoader();
+    this.sortType = event.detail.value;
+    this.filterAndSortHeroes(this.searhName, this.sortType);
   }
 
   filterHeroes(name: string): void {
@@ -94,16 +109,29 @@ export class ListPage {
     );
   }
 
-  filterAndSortHeroes(name: string): void {
+  filterAndSortHeroes(name: string, sortTpe: string): void {
     this.filteredHeroes$ = this.heroes$.pipe(
       map((heroes) =>
         heroes
           .filter((hero) =>
             hero.name.toLowerCase().includes(name.toLowerCase())
           )
-          .sort((a, b) => a.name.localeCompare(b.name))
+          .sort((a, b) => {
+            if (sortTpe === 'newest') {
+              return a.id.localeCompare(b.id);
+            } else if (sortTpe === 'older') {
+              return b.id.localeCompare(a.id);
+            } else if (sortTpe === 'nameAsc') {
+              return a.name.localeCompare(b.name);
+            } else if (sortTpe === 'nameDesc') {
+              return b.name.localeCompare(a.name);
+            } else {
+              return a.name.localeCompare(b.name);
+            }
+          })
       )
     );
+    this.spinnerService.hideLoader();
   }
 
   goToEdit(id: string) {
@@ -139,7 +167,9 @@ export class ListPage {
         this.toastService.successMessage('Hero deleted!!!');
       },
       error: (err) => {
-        this.toastService.successMessage('something went wront!!! try it again');
+        this.toastService.successMessage(
+          'something went wront!!! try it again'
+        );
       },
       complete: () => {
         this.getHeroes();
