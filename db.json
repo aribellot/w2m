@@ -1,18 +1,25 @@
 {
   "heroes": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Batman",
       "realName": "Bruce wayne",
       "city": "Gotham city",
       "imgUrl": ""
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Superman",
       "realName": "Clarc kent",
       "city": "Smallville",
       "imgUrl": ""
+    },
+    {
+      "id": "8000664",
+      "name": "anonymous",
+      "realName": "el pana",
+      "city": "zaragoza",
+      "imgUrl": "https://docs-demo.ionic.io/assets/madison.jpg"
     }
   ]
 }

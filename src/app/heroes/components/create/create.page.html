@@ -42,17 +42,14 @@
             </ion-input>
           </ion-item>
           <ion-item>
-            <ion-button type="submit">
+            <ion-button type="submit" [disabled]="heroForm.invalid">
               Add new hero
             </ion-button>
           </ion-item>
         </ion-list>
       </ion-col>
       <ion-col>
-        <ion-img
-          [src]="imagePreview"
-          alt="new hero preview"
-        />
+        <ion-img [src]="imagePreview" alt="new hero preview" />
       </ion-col>
     </ion-row>
   </form>
