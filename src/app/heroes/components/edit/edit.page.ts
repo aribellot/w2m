@@ -20,6 +20,8 @@ import {
   IonRow,
 } from '@ionic/angular/standalone';
 import { HeroService } from '../../services/hero.service';
+import { ToastService } from 'src/app/core/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -46,6 +48,8 @@ export class EditPage implements OnInit {
   @Input({ required: true }) id: number = 0;
   fb = inject(FormBuilder);
   heroService = inject(HeroService);
+  toastService = inject(ToastService);
+  router = inject(Router);
 
   defaultImage =
     'https://logowik.com/content/uploads/images/949_anonymous_logo.jpg';
@@ -95,13 +99,13 @@ export class EditPage implements OnInit {
       const hero = this.heroForm.value;
       this.heroService.updateHero(hero).subscribe({
         next: () => {
-          console.log('next');
+          this.toastService.successMessage('Hero updated!!!');
         },
         error: () => {
-          console.log('error');
+          this.toastService.errorMessage('Something went wrong, try it again!!!');
         },
         complete: () => {
-          console.log('complete');
+          this.router.navigate(['heroes/list']);
         },
       });
     }

@@ -10,27 +10,51 @@
       <ion-title size="large">List</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-row>
+    <ion-col>
+      <ion-searchbar [debounce]="1000" (ionInput)="doSearch($event)" color="light"></ion-searchbar>
+    </ion-col>
+  </ion-row>
   @if (filteredHeroes$ | async; as filteredHeroes) {
-  <ion-grid>
-    <ion-row>
-      <ion-col> Id </ion-col>
-      <ion-col> Name </ion-col>
-      <ion-col> Identity </ion-col>
-      <ion-col> City </ion-col>
-      <ion-col> Actions </ion-col>
-    </ion-row>
+  <ion-row>
     @for (hero of filteredHeroes; track hero.id) {
-    <ion-row>
-      <ion-col> {{ hero.id }} </ion-col>
-      <ion-col> {{ hero.name }} </ion-col>
-      <ion-col> {{ hero.realName }} </ion-col>
-      <ion-col> {{ hero.city }} </ion-col>
-      <ion-col> edit </ion-col>
-    </ion-row>
+    <ion-col size-xl="2" size-lg="4" size-xs="6">
+      <ion-card class="hero-card">
+        @if(hero.imgUrl){
+        <img [alt]="hero.name" [src]="hero.imgUrl" />
+        }
+        <ion-card-header>
+          <ion-card-title>{{hero.name | titlecase }}</ion-card-title>
+          <ion-card-subtitle>{{hero.city}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button
+              fill="clear"
+              expand="block"
+              color="success"
+              (click)="goToEdit(hero.id)"
+            >
+              <ion-icon slot="icon-only" name="create-outline" />
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button
+              fill="clear"
+              expand="block"
+              color="danger"
+              (click)="confirmDelete(hero.id)"
+            >
+              <ion-icon slot="icon-only" name="trash-outline" />
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
     } @empty {
     <p>No heroes found</p>
     }
-  </ion-grid>
+  </ion-row>
   } @else {
   <ion-row>
     <ion-col>Loading ...</ion-col>

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, delay, map, tap } from 'rxjs/operators';
+import { catchError, delay, finalize, map, tap } from 'rxjs/operators';
 import { Hero } from '../models/hero';
 import { environment } from 'src/environments/environment';
 
@@ -29,8 +29,7 @@ export class HeroService {
 
   /** GET hero by id. Will 404 if id not found */
   getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Hero>(url).pipe(
+    return this.http.get<Hero>(`${this.heroesUrl}/${id}`).pipe(
       tap((_) => console.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
@@ -46,28 +45,22 @@ export class HeroService {
 
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(`${this.heroesUrl}/${hero.id}`, hero, this.httpOptions).pipe(
-      tap((_) => console.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
-  }
-
-  /** PATCH: partially update the hero on the server */
-  patchHero(id: number, hero: Partial<Hero>): Observable<any> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.patch(url, hero, this.httpOptions).pipe(
-      tap((_) => console.log(`patched hero id=${id}`)),
-      catchError(this.handleError<any>('patchHero'))
-    );
+    return this.http
+      .put(`${this.heroesUrl}/${hero.id}`, hero, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`updated hero id=${hero.id}`)),
+        catchError(this.handleError<any>('updateHero'))
+      );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
-    return this.http.delete<Hero>(url, this.httpOptions).pipe(
-      tap((_) => console.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Hero>('deleteHero'))
-    );
+  deleteHero(id: string): Observable<Hero> {
+    return this.http
+      .delete<Hero>(`${this.heroesUrl}/${id}`, this.httpOptions)
+      .pipe(
+        tap((_) => console.log(`deleted hero id=${id}`)),
+        catchError(this.handleError<Hero>('deleteHero'))
+      );
   }
 
   /**

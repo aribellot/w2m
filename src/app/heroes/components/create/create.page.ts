@@ -20,6 +20,8 @@ import {
   IonButton,
 } from '@ionic/angular/standalone';
 import { HeroService } from '../../services/hero.service';
+import { ToastService } from 'src/app/core/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -45,6 +47,8 @@ import { HeroService } from '../../services/hero.service';
 export class CreatePage {
   fb = inject(FormBuilder);
   heroService = inject(HeroService);
+  toastService = inject(ToastService);
+  router = inject(Router);
 
   defaultImage =
     'https://logowik.com/content/uploads/images/949_anonymous_logo.jpg';
@@ -75,13 +79,13 @@ export class CreatePage {
       const hero = this.heroForm.value;
       this.heroService.addHero(hero).subscribe({
         next: () => {
-          console.log('next');
+          this.toastService.successMessage('Hero added!!!');
         },
         error: () => {
-          console.log('error');
+          this.toastService.errorMessage('Something went wrong, try it again!!!');
         },
         complete: () => {
-          console.log('complete');
+          this.router.navigate(['heroes/list']);
         },
       });
     }

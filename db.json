@@ -5,21 +5,35 @@
       "name": "Batman",
       "realName": "Bruce wayne",
       "city": "Gotham city",
-      "imgUrl": ""
-    },
-    {
-      "id": "2",
-      "name": "Superman",
-      "realName": "Clarc kent",
-      "city": "Smallville",
-      "imgUrl": ""
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/85.jpg"
     },
     {
       "id": "8000664",
       "name": "anonymous",
       "realName": "el pana",
       "city": "zaragoza",
-      "imgUrl": "https://docs-demo.ionic.io/assets/madison.jpg"
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/110.jpg"
+    },
+    {
+      "id": "5497743",
+      "name": "asdf",
+      "realName": "asdfas",
+      "city": "asdfasdf",
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/145.jpg"
+    },
+    {
+      "id": "1234",
+      "name": "Batman",
+      "realName": "Bruce wayne",
+      "city": "Gotham city",
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/70.jpg"
+    },
+    {
+      "id": "22342234",
+      "name": "Superman",
+      "realName": "Clark kent",
+      "city": "Smallville",
+      "imgUrl": "https://www.superherodb.com/pictures2/portraits/10/100/480.jpg"
     }
   ]
 }
