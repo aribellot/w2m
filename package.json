@@ -1,8 +1,8 @@
 {
   "name": "w2m",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Arian Bellot",
+  "homepage": "https://www.linkedin.com/in/arianbellot/",
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"json-server --watch db.json\" \"ng serve\"",
@@ -62,5 +62,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.5"
   },
-  "description": "An Ionic project"
+  "description": "A project for agap2 evaluation"
 }
