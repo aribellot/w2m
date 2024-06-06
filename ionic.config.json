@@ -1,0 +1,7 @@
+{
+  "name": "w2m",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

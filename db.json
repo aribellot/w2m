@@ -1,0 +1,16 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Batman",
+      "realName": "Bruce wayne",
+      "city": "Gotham city"
+    },
+    {
+      "id": 2,
+      "name": "Superman",
+      "realName": "Clarc kent",
+      "city": "Smallville"
+    }
+  ]
+}
