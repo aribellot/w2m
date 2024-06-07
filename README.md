@@ -1,6 +1,6 @@
 # core
 
-This library was generated with Ionic 8 & andgular 18
+This library was generated with Ionic 8 & andgular 18 standalone
 
 ## Start project
 Run 'npm run start'
