@@ -2,6 +2,9 @@
 
 This library was generated with Ionic 8 & andgular 18 standalone
 
+## Install project
+Run 'npm i'
+
 ## Start project
 Run 'npm run start'
 
