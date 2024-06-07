@@ -92,23 +92,6 @@ export class ListPage {
     this.filterAndSortHeroes(this.searhName, this.sortType);
   }
 
-  filterHeroes(name: string): void {
-    this.filteredHeroes$ = this.heroes$.pipe(
-      map((heroes) =>
-        heroes.filter((hero) =>
-          hero.name.toLowerCase().includes(name.toLowerCase())
-        )
-      )
-    );
-    this.spinnerService.hideLoader();
-  }
-
-  sortHeroesByName(): void {
-    this.filteredHeroes$ = this.heroes$.pipe(
-      map((heroes) => heroes.sort((a, b) => a.name.localeCompare(b.name)))
-    );
-  }
-
   filterAndSortHeroes(name: string, sortTpe: string): void {
     this.filteredHeroes$ = this.heroes$.pipe(
       map((heroes) =>
